@@ -7,10 +7,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=16" />
+  <link rel="stylesheet" href="./styles.css?v=20" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.js",
+        "three/addons/": "./vendor/three/addons/"
+      }
+    }
+  </script>
 </head>
 <body>
-  <div class="world" aria-hidden="true">
+  <div class="world" id="world" aria-hidden="true">
     <div class="landscape-wrap">
       <img class="landscape" src="./assets/landscape.png" alt="" />
     </div>
@@ -24,7 +32,6 @@
     </div>
 
     <div class="foliage-sway"></div>
-
     <div class="world-veil"></div>
   </div>
 
@@ -37,17 +44,79 @@
   </main>
 
   <main class="app-screen" id="appScreen" hidden>
-    <header class="app-header">
-      <button type="button" class="back-btn" id="backBtn">Back</button>
-      <span class="app-title">Chirply</span>
-    </header>
-    <div class="app-body">
-      <p class="coming">Listen screen next — splash is ready.</p>
+    <button type="button" class="back-btn back-float" id="backBtn">Back</button>
+
+    <div class="workspace" id="workspace">
+      <section class="grid-panel" id="gridPanel" hidden>
+        <div class="cad-mount" id="cadMount" aria-label="Sound frequency grid"></div>
+        <p class="listen-status" id="listenStatus">Listening…</p>
+      </section>
+
+      <aside class="result-panel" id="resultPanel" hidden>
+        <div class="result-media">
+          <img id="resultImage" class="result-image" alt="" hidden />
+          <div class="result-image-fallback" id="resultImageFallback" aria-hidden="true">Bird</div>
+        </div>
+        <h2 class="result-name" id="resultName">—</h2>
+        <p class="result-sci" id="resultSci">—</p>
+        <dl class="result-meta">
+          <div>
+            <dt>Confidence</dt>
+            <dd id="resultConfidence">—</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd id="resultLocation">—</dd>
+          </div>
+          <div>
+            <dt>Heard</dt>
+            <dd id="resultHeard">—</dd>
+          </div>
+        </dl>
+        <p class="result-note" id="resultNote"></p>
+      </aside>
     </div>
+
+    <nav class="tool-bar" aria-label="Identify tools">
+      <button type="button" class="tool-btn" id="fileBtn" disabled title="Upload a recording">
+        <span class="tool-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+          </svg>
+        </span>
+        <span class="tool-label">File</span>
+      </button>
+
+      <button type="button" class="tool-btn tool-btn-primary" id="micBtn" title="Listen with microphone">
+        <span class="tool-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="11" rx="3" />
+            <path d="M5 11a7 7 0 0 0 14 0" />
+            <path d="M12 18v3" />
+            <path d="M9 21h6" />
+          </svg>
+        </span>
+        <span class="tool-label">Mic</span>
+      </button>
+
+      <button type="button" class="tool-btn" id="resultBtn" disabled title="View identification">
+        <span class="tool-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 7c0-2-1.5-4-4-4S8 5 8 7c0 1.2.5 2.2 1.2 3L4 16l3 1 2.5-2.5L12 18l2-1-1.5-3.5L16 11c.6-.8 1-1.8 1-3z" />
+            <circle cx="14.2" cy="6.2" r="0.7" fill="currentColor" stroke="none" />
+          </svg>
+        </span>
+        <span class="tool-label">Result</span>
+      </button>
+    </nav>
+
+    <input type="file" id="fileInput" accept="audio/*,.wav,.mp3,.m4a,.ogg" hidden />
   </main>
 
-  <script src="./ambient.js?v=17"></script>
-  <script src="./birdsVideo.js?v=17"></script>
-  <script src="./app.js?v=17"></script>
+  <script src="./ambient.js?v=20"></script>
+  <script src="./birdsVideo.js?v=20"></script>
+  <script src="./app.js?v=20"></script>
+  <script type="module" src="./cadGrid.js?v=20"></script>
 </body>
 </html>
