@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chirply</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=4" />
+</head>
+<body>
+  <canvas id="flock" class="flock" aria-hidden="true"></canvas>
+
+  <main class="splash" id="splash">
+    <h1 class="brand">Chirply</h1>
+    <p class="tagline">Hear a bird. Know its name.</p>
+    <button type="button" class="start-btn" id="startBtn">Start</button>
+  </main>
+
+  <main class="app-screen" id="appScreen" hidden>
+    <header class="app-header">
+      <button type="button" class="back-btn" id="backBtn">Back</button>
+      <span class="app-title">Chirply</span>
+    </header>
+    <div class="app-body">
+      <p class="coming">Listen screen next — splash is ready.</p>
+    </div>
+  </main>
+
+  <script src="./birds.js?v=4"></script>
+  <script src="./app.js?v=4"></script>
+</body>
+</html>

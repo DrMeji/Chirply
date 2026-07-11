@@ -5,6 +5,13 @@ build/
 .venv/
 __pycache__/
 *.pyc
+.expo/
+mobile/
+uploads/
+*.m4a
+*.wav
+*.egg-info/
+src/*.egg-info/
 
 # OS / editor
 .DS_Store
