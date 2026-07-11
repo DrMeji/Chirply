@@ -7,9 +7,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=4" />
+  <link rel="stylesheet" href="./styles.css?v=16" />
 </head>
 <body>
+  <div class="world" aria-hidden="true">
+    <div class="landscape-wrap">
+      <img class="landscape" src="./assets/landscape.png" alt="" />
+    </div>
+
+    <div class="sky-anim">
+      <div class="cloud cloud-a"></div>
+      <div class="cloud cloud-b"></div>
+      <div class="cloud cloud-c"></div>
+      <div class="mist mist-a"></div>
+      <div class="mist mist-b"></div>
+    </div>
+
+    <div class="foliage-sway"></div>
+
+    <div class="world-veil"></div>
+  </div>
+
   <canvas id="flock" class="flock" aria-hidden="true"></canvas>
 
   <main class="splash" id="splash">
@@ -28,7 +46,8 @@
     </div>
   </main>
 
-  <script src="./birds.js?v=4"></script>
-  <script src="./app.js?v=4"></script>
+  <script src="./ambient.js?v=17"></script>
+  <script src="./birdsVideo.js?v=17"></script>
+  <script src="./app.js?v=17"></script>
 </body>
 </html>

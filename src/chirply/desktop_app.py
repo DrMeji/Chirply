@@ -28,6 +28,12 @@ def _free_port() -> int:
 
 
 class _QuietHandler(SimpleHTTPRequestHandler):
+    def end_headers(self) -> None:
+        # Avoid stale CSS/JS when iterating on the splash UI.
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        super().end_headers()
+
     def log_message(self, format: str, *args) -> None:  # noqa: A003
         return
 
@@ -55,7 +61,7 @@ def run_desktop_app(*, width: int = 1100, height: int = 720) -> int:
         width=width,
         height=height,
         min_size=(800, 560),
-        background_color="#000000",
+        background_color="#7eb6e0",
         text_select=False,
     )
     webview.start()

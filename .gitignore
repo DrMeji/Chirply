@@ -13,6 +13,12 @@ uploads/
 *.egg-info/
 src/*.egg-info/
 
+# Large green-screen bird clips (keep local; too big for git)
+web/assets/videos/
+*.mp4
+*.glb
+!web/assets/.gitkeep
+
 # OS / editor
 .DS_Store
 Thumbs.db
